@@ -6,6 +6,8 @@ public class GeneralController : MonoBehaviour
 {
     [Tooltip("Speed in which the player goes forward")]
     [SerializeField] int speed;
+    [Tooltip("Knockback Power, preferably around 2x of speed")]
+    [SerializeField] int knockbackIntensity;
     [Tooltip("Speed that the player walks sideways")]
     [SerializeField] float sideSpeed;
     [Tooltip("How many times can the player run into something?")]
@@ -16,6 +18,7 @@ public class GeneralController : MonoBehaviour
     // Could use this for GameOverHandlers, ScreenShakeHandler, UI, etc.
     public System.Action OnDamage, OnDeath;
 
+    private int curSpeed;
     private int hpLeft;
     private float damageCooldown;
 
@@ -25,13 +28,14 @@ public class GeneralController : MonoBehaviour
     private void Awake()
     {
         hpLeft = totalHP;
+        curSpeed = speed;
     }
 
     private void Update()
     {
         damageCooldown -= Time.deltaTime;
 
-        float zMovement = speed * Time.deltaTime * Direction;
+        float zMovement = curSpeed * Time.deltaTime * Direction;
 
         TryMoveForward(new Vector3(0, 0, zMovement));
 
@@ -67,14 +71,13 @@ public class GeneralController : MonoBehaviour
     // Makes it so the player has a lil knockback effect
     private IEnumerator SpeedBack()
     {
-        int orig = speed;
-        speed *= -2;
-        while (speed < orig)
+        curSpeed = -knockbackIntensity;
+        while (curSpeed < speed)
         {
-            speed++;
+            curSpeed++;
             yield return new WaitForSeconds(0.03f);
         }
-        speed = orig;
+        curSpeed = speed;
     }
 
     private bool AttemptMovement(Vector3 addition)
@@ -90,6 +93,8 @@ public class GeneralController : MonoBehaviour
                 if (addition.z != 0 || obstacleComponent.DestroyOnSideContact)
                     obstacleComponent.RunInto(GoesForward);
             }
+            else
+                canPass = false;
         }
         return canPass;
     }
