@@ -7,6 +7,7 @@ public class Obstacle : MonoBehaviour
     [SerializeField] HitBehaviour preyBehaviour;
     [SerializeField] HitBehaviour predatorBehaviour;
     [SerializeField] bool destroyOnSideContact;
+    [SerializeField] bool ignoreWhenJumping;
     public bool DestroyOnSideContact => destroyOnSideContact;
 
     /// <summary>
@@ -14,16 +15,18 @@ public class Obstacle : MonoBehaviour
     /// </summary>
     /// <param name="isTFed">Is the Player being chased or chasing?</param>
     /// <returns>Does the player take damage?</returns>
-    public void RunInto(bool isPrey)
+    public void RunInto(bool isPrey, bool isJumping = false)
     {
+        if (ignoreWhenJumping && isJumping) return;
         var check = isPrey ? preyBehaviour : predatorBehaviour;
 
         if (check == HitBehaviour.DestroyThis || check == HitBehaviour.DamagePlayerAndDestroyThis)
             DestroyObstacle();
     }
 
-    public bool IsWalkable(bool isPrey)
+    public bool IsWalkable(bool isPrey, bool isJumping = false)
     {
+        if (ignoreWhenJumping && isJumping) return true;
         var check = isPrey ? preyBehaviour : predatorBehaviour;
         return check == HitBehaviour.Passage || check == HitBehaviour.DestroyThis;
     }

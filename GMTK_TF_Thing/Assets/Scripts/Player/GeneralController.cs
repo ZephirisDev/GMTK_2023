@@ -24,6 +24,7 @@ public class GeneralController : MonoBehaviour
 
     protected virtual bool GoesForward => true;
     private int Direction => GoesForward ? 1 : -1;
+    protected virtual bool IsJumping => false;
 
     private void Awake()
     {
@@ -33,7 +34,8 @@ public class GeneralController : MonoBehaviour
 
     private void Update()
     {
-        damageCooldown -= Time.deltaTime;
+        Cooldowns(Time.deltaTime);
+        SpecialPowers();
 
         float zMovement = curSpeed * Time.deltaTime * Direction;
 
@@ -54,6 +56,12 @@ public class GeneralController : MonoBehaviour
             transform.position += sideVector;
     }
 
+    protected virtual void Cooldowns(float time)
+    {
+        damageCooldown -= time;
+    }
+
+    protected virtual void SpecialPowers() { }
 
     protected virtual void TryMoveForward(Vector3 movementVector)
     {
@@ -88,10 +96,10 @@ public class GeneralController : MonoBehaviour
         {
             if (obs.TryGetComponent(out Obstacle obstacleComponent))
             {
-                if (!obstacleComponent.IsWalkable(GoesForward))
+                if (!obstacleComponent.IsWalkable(GoesForward, IsJumping))
                     canPass = false;
                 if (addition.z != 0 || obstacleComponent.DestroyOnSideContact)
-                    obstacleComponent.RunInto(GoesForward);
+                    obstacleComponent.RunInto(GoesForward, IsJumping);
             }
             else
                 canPass = false;
