@@ -24,6 +24,7 @@ public class GeneralController : MonoBehaviour
     private int curSpeed;
     private int hpLeft;
     private float damageCooldown;
+    private bool disableSide;
 
     protected virtual bool GoesForward => true;
     private int Direction => GoesForward ? 1 : -1;
@@ -42,7 +43,9 @@ public class GeneralController : MonoBehaviour
 
         float zMovement = curSpeed * Time.deltaTime * Direction;
 
-        TryMoveForward(new Vector3(0, 0, zMovement));
+        TryMoveForward(zMovement);
+
+        if (disableSide) return;
 
         float xMovement = 0;
 
@@ -51,12 +54,48 @@ public class GeneralController : MonoBehaviour
         else if (Input.GetKey(KeyCode.D))
             xMovement = 1;
 
+        CheckForRotations();
+
+        if (xMovement == 0) return;
+
         var sideMovement = sideSpeed * Time.deltaTime * xMovement;
 
-        var sideVector = new Vector3(sideMovement, 0);
+        if (AttemptMovement(transform.right * sideMovement, true))
+            transform.position += transform.right * sideMovement;
+    }
 
-        if (AttemptMovement(sideVector))
-            transform.position += sideVector;
+    protected void CheckForRotations()
+    {
+        var rotations = Physics.OverlapSphere(transform.position, size, LayerLibrary.Rotators);
+        foreach(var r in rotations)
+        {
+            if(r.TryGetComponent(out Rotater rot))
+            {
+                Debug.Log("WOAHHUH??");
+                if (rot.DoRotation(GoesForward))
+                {
+                    Debug.Log("WOAH!");
+                    StartCoroutine(DoRotation(rot.preyGoLeft));
+                }
+            }
+        }
+    }
+
+    IEnumerator DoRotation(bool left)
+    {
+        if (!GoesForward) left = !left;
+        disableSide = true;
+        yield return new WaitForEndOfFrame();
+        float angles = 90;
+        while(angles > 0)
+        {
+            transform.Rotate(0, Mathf.Clamp(90 * Time.deltaTime * (left ? -1 : 1), -angles, angles), 0);
+            angles -= 90 * Time.deltaTime;
+
+            Debug.Log(angles);
+            yield return null;
+        }
+        disableSide = false;
     }
 
     protected virtual void Cooldowns(float time)
@@ -66,11 +105,11 @@ public class GeneralController : MonoBehaviour
 
     protected virtual void SpecialPowers() { }
 
-    protected virtual void TryMoveForward(Vector3 movementVector)
+    protected virtual void TryMoveForward(float movement)
     {
-        if (AttemptMovement(movementVector))
+        if (AttemptMovement(transform.forward * movement, false))
         {
-            transform.position += movementVector;
+            transform.position += transform.forward * movement;
         }
         else
         {
@@ -91,9 +130,9 @@ public class GeneralController : MonoBehaviour
         curSpeed = speed;
     }
 
-    private bool AttemptMovement(Vector3 addition)
+    private bool AttemptMovement(Vector3 movementVector, bool isSide)
     {
-        var obstacles = Physics.OverlapSphere(transform.position + addition, size, LayerLibrary.Obstacles);
+        var obstacles = Physics.OverlapSphere(transform.position + movementVector, size, LayerLibrary.Obstacles);
         bool canPass = true;
         foreach(var obs in obstacles)
         {
@@ -101,7 +140,7 @@ public class GeneralController : MonoBehaviour
             {
                 if (!obstacleComponent.IsWalkable(GoesForward, IsJumping))
                     canPass = false;
-                if (addition.z != 0 || obstacleComponent.DestroyOnSideContact)
+                if (!isSide || obstacleComponent.DestroyOnSideContact)
                     obstacleComponent.RunInto(GoesForward, IsJumping);
             }
             else
