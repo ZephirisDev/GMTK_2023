@@ -54,4 +54,10 @@ public class FrontController : GeneralController
         jumpinCooldownLeft = jumpinCooldown;
         jumping = false;
     }
+
+    protected override void Die()
+    {
+        base.Die();
+        animator.SetTrigger("TF");
+    }
 }

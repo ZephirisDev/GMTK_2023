@@ -38,9 +38,10 @@ public class WorldGenerator : MonoBehaviour
         PlaceSection(startSection);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        Debug.Log(new Vector3(curNextSpawnPos.x * sizePerSection, 0, curNextSpawnPos.y * sizePerSection));
+        if (Physics.OverlapSphere(new Vector3(curNextSpawnPos.x * sizePerSection, 0, curNextSpawnPos.y * sizePerSection), sizePerSection * 1.5f, LayerLibrary.Player).Length > 0)
             SpawnNext();
         /*
         if (curLayoutDirection == Direction.Forward)
