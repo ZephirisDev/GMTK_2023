@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 3291822042655985067}
   - component: {fileID: 741424867355621729}
   - component: {fileID: 6448725668753582487}
-  m_Layer: 0
+  - component: {fileID: 4613498208434787225}
+  m_Layer: 6
   m_Name: LogFallen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,3 +98,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -4417884177101739266, guid: 00501a2d0d3e4b64eb46869fc97d53c3, type: 3}
+--- !u!114 &4613498208434787225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246069437320190132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c3c6373bc5a4549af38c1a36ecdad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preyBehaviour: 1
+  predatorBehaviour: 2
+  destroyOnSideContact: 0
+  ignoreWhenJumping: 1

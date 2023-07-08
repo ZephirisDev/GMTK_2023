@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 5209427961694256939}
   - component: {fileID: 8047770255379205089}
   - component: {fileID: 5563090294911436297}
-  m_Layer: 0
+  - component: {fileID: -518093516333454897}
+  m_Layer: 6
   m_Name: LogNoRootsFallen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,3 +98,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 85064594987489278, guid: 2a55a1dbd464e3d4ca883a789747db91, type: 3}
+--- !u!114 &-518093516333454897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8408097465290107444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c3c6373bc5a4549af38c1a36ecdad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preyBehaviour: 1
+  predatorBehaviour: 2
+  destroyOnSideContact: 0
+  ignoreWhenJumping: 1

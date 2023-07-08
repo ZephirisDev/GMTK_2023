@@ -16,6 +16,7 @@ public class WorldGenerator : MonoBehaviour
     private Vector2Int curNextSpawnPos = new Vector2Int(0, 0);
     private Vector2Int curPlayerPos = new Vector2Int(0, -1);
     private List<Direction> directions = new List<Direction>();
+    private List<GameObject> loadedSections = new List<GameObject>();
 
     private Section GetRandomSection() {
         var validSections = GetValidSections();
@@ -72,6 +73,9 @@ public class WorldGenerator : MonoBehaviour
         var c = Instantiate(section.gameObject);
         c.transform.position = new Vector3((curNextSpawnPos.x) * sizePerSection, 0, (curNextSpawnPos.y) * sizePerSection);
         directions.Add(section.direction);
+        loadedSections.Add(c);
+        if (loadedSections.Count > 4)
+            loadedSections[loadedSections.Count - 4].SetActive(false);
         switch (curLayoutDirection)
         {
             case Direction.Left:
