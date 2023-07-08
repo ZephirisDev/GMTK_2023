@@ -54,6 +54,9 @@ public class GeneralController : MonoBehaviour
         else if (Input.GetKey(KeyCode.D))
             xMovement = 1;
 
+        if (Input.GetKeyDown(KeyCode.R))
+            Damage();
+
         CheckForRotations();
 
         if (xMovement == 0) return;
@@ -89,8 +92,8 @@ public class GeneralController : MonoBehaviour
         float angles = 90;
         while(angles > 0)
         {
-            transform.Rotate(0, Mathf.Clamp(90 * Time.deltaTime * (left ? -1 : 1), -angles, angles), 0);
-            angles -= 90 * Time.deltaTime;
+            transform.Rotate(0, Mathf.Clamp(70 * Time.deltaTime * (left ? -1 : 1), -angles, angles), 0);
+            angles -= 70 * Time.deltaTime;
 
             Debug.Log(angles);
             yield return null;

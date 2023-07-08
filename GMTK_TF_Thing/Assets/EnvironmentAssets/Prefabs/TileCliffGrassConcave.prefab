@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1700366842442923809}
   - component: {fileID: 1824704165936937206}
   - component: {fileID: 4487136043506033195}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TileCliffGrassConcave
   m_TagString: Untagged
   m_Icon: {fileID: 0}

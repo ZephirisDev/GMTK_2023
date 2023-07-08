@@ -427,14 +427,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tracker: {fileID: 1223014080}
   spawnOnDelta: 20
-  sizePerSection: 50
+  sizePerSection: 30
   sections:
-  - {fileID: 1162782494250203331, guid: 973cc91b9170c8c4db09a74bb24d9d77, type: 3}
-  - {fileID: 1162782494250203331, guid: 6282d6116a663e1468ebe442896284bd, type: 3}
-  - {fileID: 1162782494250203331, guid: 7cdc25b65a8d5874c9299847131b3b4d, type: 3}
-  - {fileID: 1162782494250203331, guid: 7cdc25b65a8d5874c9299847131b3b4d, type: 3}
-  - {fileID: 1162782494250203331, guid: 7cdc25b65a8d5874c9299847131b3b4d, type: 3}
-  startSection: {fileID: 1162782494250203331, guid: 7cdc25b65a8d5874c9299847131b3b4d, type: 3}
+  - {fileID: 1725528025296975253, guid: 9992285a868b7ce4ca25235063c37dfd, type: 3}
+  - {fileID: 5748336455133916319, guid: 25ca87a192890f84b8d0566ce34a5d15, type: 3}
+  - {fileID: 5693385734188088596, guid: 0a4a4356dee5a7f489325e7f2f19b999, type: 3}
+  startSection: {fileID: 1725528025296975253, guid: 9992285a868b7ce4ca25235063c37dfd, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,7 +995,7 @@ MonoBehaviour:
   knockbackIntensity: 10
   sideSpeed: 8
   totalHP: 3
-  size: 0.25
+  size: 0.45
   animator: {fileID: 1158362837}
   shadowAnimator: {fileID: 351569085}
   camHolder: {fileID: 956020555}
@@ -1051,7 +1049,7 @@ MonoBehaviour:
   knockbackIntensity: 7
   sideSpeed: 7
   totalHP: 5
-  size: 0.4
+  size: 0.45
   animator: {fileID: 1158362837}
   shadowAnimator: {fileID: 351569085}
   camHolder: {fileID: 956020555}
