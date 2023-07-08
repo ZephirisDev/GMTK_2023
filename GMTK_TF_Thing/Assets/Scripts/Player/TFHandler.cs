@@ -6,6 +6,7 @@ using UnityEngine;
 public class TFHandler : MonoBehaviour
 {
     [SerializeField] Animator camAnimator;
+    [SerializeField] GameObject badger;
     private FrontController preyController;
     private BackController predatorController;
 
@@ -22,6 +23,18 @@ public class TFHandler : MonoBehaviour
     private void Damage()
     {
         camAnimator.SetTrigger("Hurt");
+        StartCoroutine(GetBadgerClose());
+    }
+
+    private IEnumerator GetBadgerClose()
+    {
+        float totalDistance = 0.5f;
+        while(totalDistance > 0)
+        {
+            badger.transform.localPosition += new Vector3(0, 0, 1f * Time.deltaTime);
+            totalDistance -= 1f * Time.deltaTime;
+            yield return null;
+        }
     }
 
     private void TurnToPredator()

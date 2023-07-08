@@ -125,6 +125,7 @@ public class GeneralController : MonoBehaviour
         {
             Die();
         }
+        FindObjectOfType<ScreenShaker>().ShakeScreen(0.15f, 0.05f);
         Debug.Log($"Yeouch! ({hpLeft}/{totalHP})");
         OnDamage?.Invoke();
     }
