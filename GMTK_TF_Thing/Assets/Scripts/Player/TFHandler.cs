@@ -5,9 +5,7 @@ using UnityEngine;
 
 public class TFHandler : MonoBehaviour
 {
-    [SerializeField] SpriteRenderer sprite;
     [SerializeField] Animator camAnimator;
-    [SerializeField] Sprite testerSprite;
     private FrontController preyController;
     private BackController predatorController;
 
@@ -31,7 +29,6 @@ public class TFHandler : MonoBehaviour
         // Time til animation be done
         camAnimator.SetTrigger("TFTrigger");
         yield return new WaitForSeconds(3);
-        sprite.sprite = testerSprite;
         predatorController.enabled = true;
     }
 }
