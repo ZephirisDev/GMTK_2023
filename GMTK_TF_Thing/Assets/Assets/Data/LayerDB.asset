@@ -18,3 +18,6 @@ MonoBehaviour:
   rotator:
     serializedVersion: 2
     m_Bits: 256
+  player:
+    serializedVersion: 2
+    m_Bits: 512

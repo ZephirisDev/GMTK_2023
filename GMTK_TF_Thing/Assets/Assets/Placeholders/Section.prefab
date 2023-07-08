@@ -108,8 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c3c6373bc5a4549af38c1a36ecdad2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  preyBehaviour: 2
-  predatorBehaviour: 0
+  preyBehaviour: 1
+  predatorBehaviour: 2
   destroyOnSideContact: 0
   ignoreWhenJumping: 1
 --- !u!1 &609070521883506647
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c3c6373bc5a4549af38c1a36ecdad2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  preyBehaviour: 2
+  preyBehaviour: 1
   predatorBehaviour: 2
   destroyOnSideContact: 0
   ignoreWhenJumping: 1
@@ -428,7 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c3c6373bc5a4549af38c1a36ecdad2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  preyBehaviour: 2
+  preyBehaviour: 1
   predatorBehaviour: 2
   destroyOnSideContact: 0
   ignoreWhenJumping: 1
@@ -540,7 +540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c3c6373bc5a4549af38c1a36ecdad2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  preyBehaviour: 2
+  preyBehaviour: 1
   predatorBehaviour: 2
   destroyOnSideContact: 0
   ignoreWhenJumping: 1
