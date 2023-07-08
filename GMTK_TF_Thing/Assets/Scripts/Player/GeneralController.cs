@@ -14,6 +14,9 @@ public class GeneralController : MonoBehaviour
     [SerializeField] int totalHP;
     [Tooltip("How big is the player hitbox?")]
     [SerializeField] float size;
+    [SerializeField] protected Animator animator;
+    [SerializeField] protected Animator shadowAnimator;
+    [SerializeField] protected Transform camHolder;
 
     // Could use this for GameOverHandlers, ScreenShakeHandler, UI, etc.
     public System.Action OnDamage, OnDeath;

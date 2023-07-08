@@ -15,7 +15,13 @@ public class TFHandler : MonoBehaviour
         predatorController = GetComponent<BackController>();
         predatorController.enabled = false;
 
+        preyController.OnDamage += Damage;
         preyController.OnDeath += TurnToPredator;
+    }
+
+    private void Damage()
+    {
+        camAnimator.SetTrigger("Hurt");
     }
 
     private void TurnToPredator()
