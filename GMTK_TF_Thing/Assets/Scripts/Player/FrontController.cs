@@ -28,15 +28,30 @@ public class FrontController : GeneralController
     private void Jump()
     {
         jumping = true;
+        animator.SetBool("jumping", true);
+        shadowAnimator.SetBool("jumping", true);
         StartCoroutine(JumpingTime());
     }
 
     private IEnumerator JumpingTime()
     {
-        transform.position += new Vector3(0, 0.2f);
-        yield return new WaitForSeconds(jumpinTime);
+        float timePassed = 0;
+        Vector3 jumpVec = new Vector3(0, 0.7f, -0.1f);
+        while (timePassed < jumpinTime / 3) { 
+            camHolder.localPosition += jumpVec * Time.deltaTime;
+            timePassed += Time.deltaTime;
+            yield return null;
+        }
+        yield return new WaitForSeconds(jumpinTime / 3 * 2);
+        animator.SetBool("jumping", false);
+        shadowAnimator.SetBool("jumping", false);
+        while (camHolder.localPosition.y > 0)
+        {
+            camHolder.localPosition -= jumpVec * 2 * Time.deltaTime;
+            yield return null;
+        }
+        camHolder.localPosition = Vector3.zero;
         jumpinCooldownLeft = jumpinCooldown;
         jumping = false;
-        transform.position += new Vector3(0, -0.2f);
     }
 }

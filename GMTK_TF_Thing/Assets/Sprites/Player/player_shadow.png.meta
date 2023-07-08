@@ -14,6 +14,9 @@ TextureImporter:
   - first:
       213: 5330400524569729424
     second: player_shadow_3
+  - first:
+      213: -6125080139354985341
+    second: player_shadow_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -182,6 +185,27 @@ TextureImporter:
       bones: []
       spriteID: 099d881190369f940800000000000000
       internalID: 5330400524569729424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: player_shadow_4
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38c22f8b0185ffaa0800000000000000
+      internalID: -6125080139354985341
       vertices: []
       indices: 
       edges: []
