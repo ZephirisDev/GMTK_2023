@@ -24,3 +24,6 @@ MonoBehaviour:
   player:
     serializedVersion: 2
     m_Bits: 512
+  finale:
+    serializedVersion: 2
+    m_Bits: 1024

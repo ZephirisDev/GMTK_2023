@@ -72,6 +72,12 @@ public class FrontController : GeneralController
         jumping = false;
     }
 
+    public override void Damage()
+    {
+        base.Damage();
+        cooldownBadger += 0.2f;
+    }
+
     protected override void Die()
     {
         base.Die();

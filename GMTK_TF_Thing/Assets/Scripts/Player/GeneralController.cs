@@ -13,7 +13,7 @@ public class GeneralController : MonoBehaviour
     [Tooltip("How many times can the player run into something?")]
     [SerializeField] int totalHP;
     [Tooltip("How big is the player hitbox?")]
-    [SerializeField] float size;
+    [SerializeField] protected float size;
     [SerializeField] protected Animator animator;
     [SerializeField] protected Animator shadowAnimator;
     [SerializeField] protected Transform camHolder;

@@ -17,6 +17,19 @@ public class BackController : GeneralController
         }
     }
 
+    protected override void SpecialPowers()
+    {
+        var rotations = Physics.OverlapSphere(transform.position, size, LayerLibrary.Finale);
+        if(rotations.Length > 0)
+        {
+            FindObjectOfType<Finale>().GameOver(false);
+            animator.SetTrigger("return");
+            this.enabled = false;
+            shadowAnimator.enabled = false;
+        }
+    }
+
+
     protected override void Rotate(float amount)
     {
         base.Rotate(amount);
