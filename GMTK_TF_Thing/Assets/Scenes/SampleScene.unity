@@ -5901,71 +5901,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: TileCliffGrass (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 6622988962798657602, guid: 01a41a75cd47b8647971033150b8809a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01a41a75cd47b8647971033150b8809a, type: 3}
---- !u!1 &544163979
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 544163981}
-  - component: {fileID: 544163980}
-  m_Layer: 0
-  m_Name: AudioHandler
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &544163980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544163979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af744629f45078545bbb9a7b990e3c28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 8061798669139379924}
-  sounds:
-  - s: 0
-    clip: {fileID: 8300000, guid: e09d6fc42d2b4344b9fc7b66a030a98e, type: 3}
-    volume: 0.2
-  - s: 1
-    clip: {fileID: 8300000, guid: 403c6f064c665c34fa998a7ea5841200, type: 3}
-    volume: 0.2
-  - s: 2
-    clip: {fileID: 8300000, guid: 7c31b05b48fbbd341bed180690dc84fd, type: 3}
-    volume: 0.2
-  - s: 5
-    clip: {fileID: 8300000, guid: b1134fa6a3c62c243b4953b5ddf1b820, type: 3}
-    volume: 0.2
-  - s: 3
-    clip: {fileID: 8300000, guid: 9eaee91920ecff145afcd1a499af659c, type: 3}
-    volume: 0.6
-  - s: 4
-    clip: {fileID: 8300000, guid: cd2afa5c616c32f49b9a4897554bec87, type: 3}
-    volume: 0.9
---- !u!4 &544163981
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544163979}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.25702578, y: -0.043586254, z: -1.7842245}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 33
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &556668316
 GameObject:
   m_ObjectHideFlags: 0
@@ -6068,7 +6009,7 @@ Transform:
   - {fileID: 683587825}
   - {fileID: 2046124683}
   m_Father: {fileID: 0}
-  m_RootOrder: 36
+  m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &566923076 stripped
 Transform:
@@ -7059,6 +7000,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TileCliffGrass (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6622988962798657602, guid: 01a41a75cd47b8647971033150b8809a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01a41a75cd47b8647971033150b8809a, type: 3}
 --- !u!1 &963194225
@@ -7074,6 +7019,7 @@ GameObject:
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
   - component: {fileID: 963194230}
+  - component: {fileID: 963194231}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7121,7 +7067,7 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
@@ -7181,6 +7127,66 @@ MonoBehaviour:
   fogColor: {r: 0.6117647, g: 0.50980395, b: 0.32156864, a: 1}
   fogDensity: 1
   fogOffset: 25
+--- !u!114 &963194231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 963194228}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 1
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 1
+  m_ShowCustomSorter: 1
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1001 &1025546007
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8238,8 +8244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b727a84c38bab142a39d0d09a6887ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
-  knockbackIntensity: 7
+  speed: 7
+  knockbackIntensity: 8
   sideSpeed: 7
   totalHP: 5
   size: 0.45
@@ -8732,6 +8738,10 @@ PrefabInstance:
     - target: {fileID: 6622988962798657602, guid: 01a41a75cd47b8647971033150b8809a, type: 3}
       propertyPath: m_Name
       value: TileCliffGrass (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622988962798657602, guid: 01a41a75cd47b8647971033150b8809a, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01a41a75cd47b8647971033150b8809a, type: 3}
@@ -14131,7 +14141,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 35
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1507654578
 PrefabInstance:
@@ -14445,7 +14455,7 @@ Transform:
   - {fileID: 1803552667}
   - {fileID: 1149840365}
   m_Father: {fileID: 0}
-  m_RootOrder: 37
+  m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1584406584
 PrefabInstance:
@@ -14651,6 +14661,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TileCliffGrass (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6622988962798657602, guid: 01a41a75cd47b8647971033150b8809a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01a41a75cd47b8647971033150b8809a, type: 3}
 --- !u!1001 &1671819138
@@ -14821,6 +14835,10 @@ PrefabInstance:
     - target: {fileID: 6622988962798657602, guid: 01a41a75cd47b8647971033150b8809a, type: 3}
       propertyPath: m_Name
       value: TileCliffGrass (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622988962798657602, guid: 01a41a75cd47b8647971033150b8809a, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01a41a75cd47b8647971033150b8809a, type: 3}
@@ -15029,6 +15047,54 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5796174195972904719, guid: 957489acde08a274988e38873ef193ab, type: 3}
   m_PrefabInstance: {fileID: 1727690625}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1755589282
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1755589284}
+  - component: {fileID: 1755589283}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1755589283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755589282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 952454ed64f62e14cbdeca6a1eac1fb3, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
+--- !u!4 &1755589284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755589282}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.136591, y: -0.5079458, z: 7.6609592}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 39
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1788250657
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15232,6 +15298,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TileCliffGrass
       objectReference: {fileID: 0}
+    - target: {fileID: 6622988962798657602, guid: 01a41a75cd47b8647971033150b8809a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01a41a75cd47b8647971033150b8809a, type: 3}
 --- !u!1 &1820419266
@@ -15394,6 +15464,10 @@ PrefabInstance:
     - target: {fileID: 6622988962798657602, guid: 01a41a75cd47b8647971033150b8809a, type: 3}
       propertyPath: m_Name
       value: TileCliffGrass (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622988962798657602, guid: 01a41a75cd47b8647971033150b8809a, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01a41a75cd47b8647971033150b8809a, type: 3}
@@ -15688,7 +15762,7 @@ Transform:
   - {fileID: 1707194291}
   - {fileID: 402650601}
   m_Father: {fileID: 0}
-  m_RootOrder: 38
+  m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1922486605
 GameObject:
@@ -16085,6 +16159,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &2067341702
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2529752979959970043, guid: 783c0a4af5e7391498cea749b726acdb, type: 3}
+      propertyPath: m_Name
+      value: AudioHandler
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529752979959970045, guid: 783c0a4af5e7391498cea749b726acdb, type: 3}
+      propertyPath: m_RootOrder
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529752979959970045, guid: 783c0a4af5e7391498cea749b726acdb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.25702578
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529752979959970045, guid: 783c0a4af5e7391498cea749b726acdb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.043586254
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529752979959970045, guid: 783c0a4af5e7391498cea749b726acdb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.7842245
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529752979959970045, guid: 783c0a4af5e7391498cea749b726acdb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529752979959970045, guid: 783c0a4af5e7391498cea749b726acdb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529752979959970045, guid: 783c0a4af5e7391498cea749b726acdb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529752979959970045, guid: 783c0a4af5e7391498cea749b726acdb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529752979959970045, guid: 783c0a4af5e7391498cea749b726acdb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529752979959970045, guid: 783c0a4af5e7391498cea749b726acdb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529752979959970045, guid: 783c0a4af5e7391498cea749b726acdb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 783c0a4af5e7391498cea749b726acdb, type: 3}
 --- !u!1001 &2068504056
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16139,6 +16270,10 @@ PrefabInstance:
     - target: {fileID: 6622988962798657602, guid: 01a41a75cd47b8647971033150b8809a, type: 3}
       propertyPath: m_Name
       value: TileCliffGrass (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622988962798657602, guid: 01a41a75cd47b8647971033150b8809a, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01a41a75cd47b8647971033150b8809a, type: 3}
@@ -16393,7 +16528,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6580520310805089160, guid: 65103dd3703f73149ac942b844254c2c, type: 3}
       propertyPath: m_RootOrder
-      value: 34
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 6580520310805089160, guid: 65103dd3703f73149ac942b844254c2c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16437,8 +16572,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65103dd3703f73149ac942b844254c2c, type: 3}
---- !u!82 &8061798669139379924 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 7325864802250246141, guid: 65103dd3703f73149ac942b844254c2c, type: 3}
-  m_PrefabInstance: {fileID: 8061798669139379923}
-  m_PrefabAsset: {fileID: 0}

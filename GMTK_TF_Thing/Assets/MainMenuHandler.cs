@@ -45,15 +45,18 @@ public class MainMenuHandler : MonoBehaviour
         if (isLoading) return;
 
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) {
-            moveCursor(1);    
+            moveCursor(1);
+            AudioHandler.TryPlaySound(SoundIdentifier.Button_Move);
         }
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) {
-            moveCursor(-1);    
+            moveCursor(-1);
+            AudioHandler.TryPlaySound(SoundIdentifier.Button_Move);
         }
 
         if (Input.GetKeyDown(KeyCode.Return)|| Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.E)) {
             Select();
+            AudioHandler.TryPlaySound(SoundIdentifier.Button_Start);
         }
 
         int i = 0;
@@ -115,7 +118,7 @@ public class MainMenuHandler : MonoBehaviour
         _selected += dir;
         Debug.Log(_selected);
         if (_selected < 0) {
-            _selected = menuItems.Length;
+            _selected = menuItems.Length - 1;
         }
 
         if (_selected >= menuItems.Length) {

@@ -33,7 +33,7 @@ public class BadgerHandler : MonoBehaviour
             yield return WalkTo(lastPos);
             if (vuln && IsCaught())
             {
-                Debug.Log("CAUGHT!!");
+                FindObjectOfType<Finale>().GameOver(true);
                 yield break;
             }
         }
@@ -48,7 +48,7 @@ public class BadgerHandler : MonoBehaviour
     {
         var dif = pos - transform.position;
         int steps = 16;
-        float totalTime = 0.3f;
+        float totalTime = 0.28f;
 
         var smallDif = new Vector2(dif.x / (float)steps, dif.y / (float)steps);
 

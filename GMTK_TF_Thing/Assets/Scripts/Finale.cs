@@ -20,19 +20,25 @@ public class Finale : MonoBehaviour
         {
             goodEnding.SetActive(true);
         }
-        StartCoroutine(Enddddd());
-        FindObjectOfType<GeneralController>().enabled = false;
+        StartCoroutine(Enddddd(success));
+        foreach(var n in FindObjectsOfType<GeneralController>())
+            n.enabled = false;
     }
 
-    IEnumerator Enddddd()
+    IEnumerator Enddddd(bool scc)
     {
+        yield return new WaitForSeconds(1.5f);
+        AudioHandler.TryPlaySound(scc ? SoundIdentifier.Nom : SoundIdentifier.Sigh);
         var c = FindObjectOfType<music>().GetComponent<AudioSource>();
         while(c.volume > 0)
         {
-            c.volume -= Time.deltaTime * 0.02f;
+            c.volume -= Time.deltaTime * 0.03f;
             yield return null;
         }
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
+        if (scc)
+            AudioHandler.TryPlaySound(SoundIdentifier.Wink);
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(0);
     }
 

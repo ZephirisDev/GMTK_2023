@@ -65,6 +65,7 @@ public class TFHandler : MonoBehaviour
         camAnimator.SetTrigger("TFTrigger");
         badger.SetTrigger("TF");
         player.SetTrigger("TF");
+        AudioHandler.TryPlaySound(SoundIdentifier.Grrr);
         badger.GetComponent<BadgerHandler>().EndIt();
         yield return new WaitForSeconds(1f);
         predatorController.enabled = true;

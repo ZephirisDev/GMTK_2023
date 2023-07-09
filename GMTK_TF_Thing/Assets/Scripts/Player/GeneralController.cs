@@ -120,7 +120,7 @@ public class GeneralController : MonoBehaviour
 
     protected virtual void TryMoveForward(float movement)
     {
-        if (!AttemptMovement(transform.forward * movement, false))
+        if (!disableSide && !AttemptMovement(transform.forward * movement, false))
         {
             if (!ExtraCheck(transform.forward * movement))
             {

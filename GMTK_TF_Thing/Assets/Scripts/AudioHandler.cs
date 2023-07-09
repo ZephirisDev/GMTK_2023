@@ -43,5 +43,11 @@ public enum SoundIdentifier
     Jump_2,
     Destroy,
     Hurt,
-    Stomp
+    Stomp,
+    Grrr,
+    Nom,
+    Sigh,
+    Wink,
+    Button_Move,
+    Button_Start
 }
