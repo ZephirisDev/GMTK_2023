@@ -979,7 +979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   badger: {fileID: 832407888}
   goodEnding: {fileID: 1125635353}
-  badEnding: {fileID: 1125635353}
+  badEnding: {fileID: 1596887430}
 --- !u!1 &507513374
 GameObject:
   m_ObjectHideFlags: 0
