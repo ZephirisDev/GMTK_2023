@@ -7,6 +7,8 @@ public class TFHandler : MonoBehaviour
 {
     [SerializeField] Animator camAnimator;
     [SerializeField] Animator badger;
+    [SerializeField] Animator player;
+    [SerializeField] CanvasGroup tfThingy;
     private FrontController preyController;
     private BackController predatorController;
 
@@ -58,13 +60,21 @@ public class TFHandler : MonoBehaviour
     {
         // Time til animation be done
         FindObjectOfType<music>().PlaySong(1);
+        tfThingy.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2f);
         camAnimator.SetTrigger("TFTrigger");
         badger.SetTrigger("TF");
-        yield return new WaitForSeconds(2f);
+        player.SetTrigger("TF");
         badger.GetComponent<BadgerHandler>().EndIt();
         yield return new WaitForSeconds(1f);
         predatorController.enabled = true;
         FindObjectOfType<music>().PlaySong(2);
+        while(tfThingy.alpha > 0)
+        {
+            tfThingy.alpha -= Time.deltaTime * 3;
+            yield return null;
+        }
+        tfThingy.gameObject.SetActive(false);
         yield return new WaitForSeconds(2f);
         badger.GetComponent<BadgerHandler>().SetVuln();
     }

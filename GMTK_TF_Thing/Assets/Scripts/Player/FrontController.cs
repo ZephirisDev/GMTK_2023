@@ -95,6 +95,5 @@ public class FrontController : GeneralController
     {
         base.Die();
         FindObjectOfType<WorldGenerator>().Switch();
-        animator.SetTrigger("TF");
     }
 }
