@@ -978,6 +978,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   badger: {fileID: 832407888}
+  goodEnding: {fileID: 1125635353}
+  badEnding: {fileID: 1125635353}
 --- !u!1 &507513374
 GameObject:
   m_ObjectHideFlags: 0
@@ -7675,7 +7677,7 @@ MonoBehaviour:
   - {fileID: 3695335348737669775, guid: 5237df89351859e4aa026fb5217827ec, type: 3}
   - {fileID: 2088358694205561240, guid: 5237df89351859e4aa026fb5217827ec, type: 3}
   - {fileID: -3429269196449390734, guid: 5237df89351859e4aa026fb5217827ec, type: 3}
-  delay: 0.1
+  delay: 0.15
 --- !u!114 &1125635356
 MonoBehaviour:
   m_ObjectHideFlags: 0

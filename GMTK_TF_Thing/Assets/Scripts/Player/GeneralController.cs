@@ -90,11 +90,13 @@ public class GeneralController : MonoBehaviour
 
     IEnumerator DoRotation(bool left)
     {
+        curSpeed = speed;
         if (!GoesForward) left = !left;
         disableSide = true;
         yield return new WaitForEndOfFrame();
         float angles = 90;
-        while(angles > 0)
+        curSpeed = speed;
+        while (angles > 0)
         {
             Rotate(Mathf.Clamp(70 * Time.deltaTime * (left ? -1 : 1), -angles, angles));
             angles -= 70 * Time.deltaTime;
@@ -127,6 +129,7 @@ public class GeneralController : MonoBehaviour
                 return;
             }
         }
+        Uhhhh(transform.forward * movement);
             transform.position += transform.forward * movement;
 
             
@@ -155,9 +158,7 @@ public class GeneralController : MonoBehaviour
             {
                 if (damageCooldown > 0) continue;
                 if (!obstacleComponent.IsWalkable(GoesForward, IsJumping))
-                    canPass = false;
-                if (!isSide || obstacleComponent.DestroyOnSideContact)
-                    obstacleComponent.RunInto(GoesForward, IsJumping);
+                    return false;
             }
             else
                 canPass = false;
@@ -165,19 +166,35 @@ public class GeneralController : MonoBehaviour
         return canPass;
     }
 
-    private bool ExtraCheck(Vector3 movementVector)
+    private void Uhhhh(Vector3 movementVector)
     {
         var obstacles = Physics.OverlapSphere(transform.position + movementVector, size * 0.75f, LayerLibrary.Obstacles);
         foreach (var obs in obstacles)
         {
             if (obs.TryGetComponent(out Obstacle obstacleComponent))
             {
+                obstacleComponent.RunInto(GoesForward, IsJumping);
+            }
+        }
+    }
+
+    private bool ExtraCheck(Vector3 movementVector)
+    {
+        var obstacles = Physics.OverlapSphere(transform.position + movementVector, size * 0.75f, LayerLibrary.Obstacles);
+        bool canPass = true;
+        foreach (var obs in obstacles)
+        {
+            if (obs.TryGetComponent(out Obstacle obstacleComponent))
+            {
                 if (!obstacleComponent.IsWalkable(GoesForward, IsJumping))
-                    return false;
+                {
+                    canPass = false;
+                }
+                obstacleComponent.RunInto(GoesForward, IsJumping);
             }
         }
 
-        return Physics.OverlapSphere(transform.position + movementVector, size, LayerLibrary.Bounds).Length == 0;
+        return canPass && Physics.OverlapSphere(transform.position + movementVector, size, LayerLibrary.Bounds).Length == 0;
     }
 
     protected virtual void Die()
@@ -191,7 +208,7 @@ public class GeneralController : MonoBehaviour
     {
         if (damageCooldown > 0) return;
 
-        damageCooldown = 1f;
+        damageCooldown = GoesForward ? 0.8f : 0.2f;
         if(--hpLeft <= 0)
         {
             Die();

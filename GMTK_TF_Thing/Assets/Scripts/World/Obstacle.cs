@@ -36,9 +36,20 @@ public class Obstacle : MonoBehaviour
     private void DestroyObstacle()
     {
         // Destroy this and maybe do some particle stuff
+        if (ded) return;
+        StartCoroutine(WaitTilEnd());
+        ded = true;
         AudioHandler.TryPlaySound(SoundIdentifier.Destroy);
+    }
+
+    private bool ded;
+
+    private IEnumerator WaitTilEnd()
+    {
+        yield return new WaitForEndOfFrame();
         ParticleHandler.PlayParticles(transform.position, transform.rotation, type, amount);
         Destroy(gameObject);
+
     }
 
     enum HitBehaviour

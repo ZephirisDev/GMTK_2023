@@ -1,17 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Finale : MonoBehaviour
 {
     [SerializeField] Transform badger;
+    [SerializeField] GameObject goodEnding;
+    [SerializeField] GameObject badEnding;
 
     public void GameOver(bool success)
     {
         if (!success)
         {
             StartCoroutine(WalkTo(badger.transform.position + new Vector3(0, 0, -10)));
+            badEnding.SetActive(true);
         }
+        else
+        {
+            goodEnding.SetActive(true);
+        }
+        StartCoroutine(Enddddd());
+        FindObjectOfType<GeneralController>().enabled = false;
+    }
+
+    IEnumerator Enddddd()
+    {
+        var c = FindObjectOfType<music>().GetComponent<AudioSource>();
+        while(c.volume > 0)
+        {
+            c.volume -= Time.deltaTime * 0.02f;
+            yield return null;
+        }
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(0);
     }
 
     IEnumerator WalkTo(Vector3 pos)

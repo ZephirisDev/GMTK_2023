@@ -31,6 +31,10 @@ public class WorldGenerator : MonoBehaviour
     {
         GoForward = false;
         poses.Remove(poses.Last());
+        if (poses.Count > 0)
+            poses.Remove(poses.Last());
+        if(poses.Count > 0)
+        poses.Remove(poses.Last());
     }
 
     private List<Section> GetValidSections()
@@ -57,9 +61,9 @@ public class WorldGenerator : MonoBehaviour
         }
         else
         {
-            if (loadedSections.Count <= 6) return;
+            if (loadedSections.Count <= 5) return;
 
-            if (Physics.OverlapSphere(new Vector3(poses.Last().x * sizePerSection, 0, poses.Last().y * sizePerSection), sizePerSection, LayerLibrary.Player).Length > 0)
+            if (Physics.OverlapSphere(new Vector3(poses.Last().x * sizePerSection, 0, poses.Last().y * sizePerSection), sizePerSection * 0.8f, LayerLibrary.Player).Length > 0)
             {
                 poses.Remove(poses.Last());
                 loadedSections[loadedSections.Count - 5].SetActive(true);
@@ -97,8 +101,8 @@ public class WorldGenerator : MonoBehaviour
         c.transform.position = new Vector3((curNextSpawnPos.x) * sizePerSection, 0, (curNextSpawnPos.y) * sizePerSection);
         directions.Add(section.direction);
         loadedSections.Add(c);
-        if (loadedSections.Count > 5)
-            loadedSections[loadedSections.Count - 5].SetActive(false);
+        if (loadedSections.Count > 6)
+            loadedSections[loadedSections.Count - 6].SetActive(false);
         switch (curLayoutDirection)
         {
             case Direction.Left:

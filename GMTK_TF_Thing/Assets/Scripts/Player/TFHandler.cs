@@ -68,13 +68,13 @@ public class TFHandler : MonoBehaviour
         badger.GetComponent<BadgerHandler>().EndIt();
         yield return new WaitForSeconds(1f);
         predatorController.enabled = true;
-        FindObjectOfType<music>().PlaySong(2);
         while(tfThingy.alpha > 0)
         {
             tfThingy.alpha -= Time.deltaTime * 3;
             yield return null;
         }
         tfThingy.gameObject.SetActive(false);
+        FindObjectOfType<music>().PlaySong(2);
         yield return new WaitForSeconds(2f);
         badger.GetComponent<BadgerHandler>().SetVuln();
     }

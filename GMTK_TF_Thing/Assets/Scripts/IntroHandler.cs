@@ -71,6 +71,7 @@ public class IntroHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         anima.SetTrigger("surprise");
+        AudioHandler.TryPlaySound(SoundIdentifier.Hurt);
         float s = 0;
         var pos = anima.transform.position;
         while (s < 1)
