@@ -110,6 +110,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   preyBehaviour: 1
-  predatorBehaviour: 1
+  predatorBehaviour: 3
   destroyOnSideContact: 0
   ignoreWhenJumping: 0
+  type: 2
+  amount: 150

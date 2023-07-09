@@ -8341,6 +8341,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stone1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1199406792503197516, guid: 50a3a545692889e4baee9cb84f4a67c9, type: 3}
+      propertyPath: predatorBehaviour
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1649768164983125471, guid: 50a3a545692889e4baee9cb84f4a67c9, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -16323,6 +16327,10 @@ PrefabInstance:
     - target: {fileID: 1001447386360222730, guid: 50a3a545692889e4baee9cb84f4a67c9, type: 3}
       propertyPath: m_Name
       value: Stone1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1199406792503197516, guid: 50a3a545692889e4baee9cb84f4a67c9, type: 3}
+      propertyPath: predatorBehaviour
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1649768164983125471, guid: 50a3a545692889e4baee9cb84f4a67c9, type: 3}
       propertyPath: m_Enabled

@@ -10,6 +10,7 @@ public class IntroHandler : MonoBehaviour
     [SerializeField] Animator cameraAnima;
     [SerializeField] Animator shadowAnima;
     [SerializeField] Transform badger;
+    [SerializeField] List<GameObject> killa;
     private bool hasStarted;
 
     private void Awake()
@@ -90,5 +91,10 @@ public class IntroHandler : MonoBehaviour
         cameraAnima.SetTrigger("Start");
         shadowAnima.enabled = true;
         front.enabled = true;
+        yield return new WaitForSeconds(5f);
+        foreach(var n in killa)
+        {
+            Destroy(n.gameObject);
+        }
     }
 }

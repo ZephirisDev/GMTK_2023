@@ -87,6 +87,7 @@ public class FrontController : GeneralController
     public override void Damage()
     {
         base.Damage();
+        AudioHandler.TryPlaySound(SoundIdentifier.Hurt);
         cooldownBadger += 0.2f;
     }
 

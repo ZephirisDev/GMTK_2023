@@ -15,12 +15,13 @@ public class AudioHandler : MonoBehaviour
 
     public static void TryPlaySound(SoundIdentifier identifier)
     {
+        Debug.Log(identifier);
         AudioSource source = Instantiate(Singleton.prefab);
         var s = Singleton.sounds.Find(x => x.s == identifier);
         source.clip = s.clip;
         source.pitch = 1 + Random.Range(-0.05f, 0.05f);
 
-        source.volume = 0.2f;
+        source.volume = s.volume;
 
         source.Play();
         Destroy(source.gameObject, s.clip.length + 0.1f);
@@ -32,6 +33,7 @@ public class Soundssss
 {
     public SoundIdentifier s;
     public AudioClip clip;
+    public float volume;
 }
 
 public enum SoundIdentifier

@@ -18,13 +18,20 @@ public class BadgerHandler : MonoBehaviour
         StartCoroutine(WalkTilEnd());
     }
 
+    public void SetVuln()
+    {
+        vuln = true;
+    }
+
+    private bool vuln;
+
     IEnumerator WalkTilEnd()
     {
         while(positions.Count > 0)
         {
             var lastPos = positions.Pop();
             yield return WalkTo(lastPos);
-            if (IsCaught())
+            if (vuln && IsCaught())
             {
                 Debug.Log("CAUGHT!!");
                 yield break;

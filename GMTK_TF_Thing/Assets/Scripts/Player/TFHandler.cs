@@ -65,5 +65,7 @@ public class TFHandler : MonoBehaviour
         yield return new WaitForSeconds(1f);
         predatorController.enabled = true;
         FindObjectOfType<music>().PlaySong(2);
+        yield return new WaitForSeconds(2f);
+        badger.GetComponent<BadgerHandler>().SetVuln();
     }
 }
