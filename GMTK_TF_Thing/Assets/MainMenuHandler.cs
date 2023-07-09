@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuHandler : MonoBehaviour
 {
+    [SerializeField] CanvasGroup can;
     public GameObject[] menuItems; 
     private Vector3[] originalPositions;
     private Vector3[] originalRotations;
@@ -15,6 +17,8 @@ public class MainMenuHandler : MonoBehaviour
     private Vector3 logoOriginalScale;
     private float logoT = 1f;
     private int _selected;
+
+    private bool isLoading;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +42,8 @@ public class MainMenuHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isLoading) return;
+
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) {
             moveCursor(1);    
         }
@@ -46,7 +52,7 @@ public class MainMenuHandler : MonoBehaviour
             moveCursor(-1);    
         }
 
-        if (Input.GetKeyDown(KeyCode.Return)|| Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Return)|| Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.E)) {
             Select();
         }
 
@@ -80,12 +86,28 @@ public class MainMenuHandler : MonoBehaviour
     private void Select()
     {
         if (_selected == 0) {
-            // Play...
+            PlayScene();
         }
 
         if (_selected == 1) {
             Application.Quit();
         }
+    }
+
+    private void PlayScene()
+    {
+        isLoading = true;
+        StartCoroutine(LoadScene());
+    }
+
+    IEnumerator LoadScene()
+    {
+        while(can.alpha < 1)
+        {
+            can.alpha += Time.deltaTime;
+            yield return null;
+        }
+        SceneManager.LoadScene(1);
     }
 
     void moveCursor(int dir) { 

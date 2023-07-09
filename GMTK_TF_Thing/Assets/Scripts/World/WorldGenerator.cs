@@ -22,8 +22,8 @@ public class WorldGenerator : MonoBehaviour
     private Section GetRandomSection() {
         var validSections = GetValidSections();
         var section = validSections[Random.Range(0, validSections.Count)];
-        //lastThree.Enqueue(section);
-        //lastThree.Dequeue();
+        lastThree.Enqueue(section);
+        lastThree.Dequeue();
         return section;
     }
 
@@ -31,20 +31,21 @@ public class WorldGenerator : MonoBehaviour
     {
         GoForward = false;
         poses.Remove(poses.Last());
-        poses.Remove(poses.Last());
     }
 
     private List<Section> GetValidSections()
     {
-        var s = sections;
+        var s = sections.Where(x => !lastThree.Contains(x));
         if (curLayoutDirection != Direction.Forward)
-            s = s.Where(x => x.direction != curLayoutDirection).ToList();
-        return s;
+            s = s.Where(x => x.direction != curLayoutDirection);
+        return s.ToList();
     }
 
     private void Awake()
     {
         PlaceSection(startSection);
+        directions.Add(startSection.direction);
+        loadedSections.Add(startSection.gameObject);
     }
 
     private void FixedUpdate()

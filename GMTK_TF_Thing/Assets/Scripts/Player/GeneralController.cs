@@ -24,7 +24,7 @@ public class GeneralController : MonoBehaviour
     protected int curSpeed;
     private int hpLeft;
     protected float damageCooldown;
-    private bool disableSide;
+    protected bool disableSide;
 
     protected virtual bool GoesForward => true;
     private int Direction => GoesForward ? 1 : -1;
