@@ -72,8 +72,8 @@ public class MainMenuHandler : MonoBehaviour
 
         selected.transform.localScale = Vector3.Lerp(selected.transform.localScale, (s * 1.4f), Time.deltaTime * 4); 
 
-        logoT += Time.deltaTime * 0.5f;
-        logo.transform.localScale = logoOriginalScale + (logoOriginalScale * (Mathf.Sin(logoT)) * 0.12f);
+        //logoT += Time.deltaTime * 0.5f;
+        //logo.transform.localScale = logoOriginalScale + (logoOriginalScale * (Mathf.Sin(logoT)) * 0.12f);
 
     }
 
