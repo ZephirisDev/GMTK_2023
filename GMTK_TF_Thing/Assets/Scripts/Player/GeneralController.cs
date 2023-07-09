@@ -5,7 +5,7 @@ using UnityEngine;
 public class GeneralController : MonoBehaviour
 {
     [Tooltip("Speed in which the player goes forward")]
-    [SerializeField] int speed;
+    [SerializeField] protected int speed;
     [Tooltip("Knockback Power, preferably around 2x of speed")]
     [SerializeField] int knockbackIntensity;
     [Tooltip("Speed that the player walks sideways")]
@@ -21,9 +21,9 @@ public class GeneralController : MonoBehaviour
     // Could use this for GameOverHandlers, ScreenShakeHandler, UI, etc.
     public System.Action OnDamage, OnDeath;
 
-    private int curSpeed;
+    protected int curSpeed;
     private int hpLeft;
-    private float damageCooldown;
+    protected float damageCooldown;
     private bool disableSide;
 
     protected virtual bool GoesForward => true;
@@ -38,7 +38,13 @@ public class GeneralController : MonoBehaviour
 
     private void Update()
     {
+        var isImmune = damageCooldown > 0;
         Cooldowns(Time.deltaTime);
+        if(isImmune && damageCooldown < 0)
+        {
+            if (!AttemptMovement(Vector3.zero, false))
+                damageCooldown = 0.1f;
+        }
         SpecialPowers();
 
         float zMovement = curSpeed * Time.deltaTime * Direction;
@@ -74,10 +80,8 @@ public class GeneralController : MonoBehaviour
         {
             if(r.TryGetComponent(out Rotater rot))
             {
-                Debug.Log("WOAHHUH??");
                 if (rot.DoRotation(GoesForward))
                 {
-                    Debug.Log("WOAH!");
                     StartCoroutine(DoRotation(rot.preyGoLeft));
                 }
             }
@@ -92,13 +96,18 @@ public class GeneralController : MonoBehaviour
         float angles = 90;
         while(angles > 0)
         {
-            transform.Rotate(0, Mathf.Clamp(70 * Time.deltaTime * (left ? -1 : 1), -angles, angles), 0);
+            Rotate(Mathf.Clamp(70 * Time.deltaTime * (left ? -1 : 1), -angles, angles));
             angles -= 70 * Time.deltaTime;
 
             Debug.Log(angles);
             yield return null;
         }
         disableSide = false;
+    }
+
+    protected virtual void Rotate(float amount)
+    {
+        transform.Rotate(0, amount, 0);
     }
 
     protected virtual void Cooldowns(float time)
@@ -110,15 +119,19 @@ public class GeneralController : MonoBehaviour
 
     protected virtual void TryMoveForward(float movement)
     {
-        if (AttemptMovement(transform.forward * movement, false))
+        if (!AttemptMovement(transform.forward * movement, false))
         {
+            if (!ExtraCheck(transform.forward * movement))
+            {
+                Damage();
+                StartCoroutine(SpeedBack());
+                return;
+            }
+        }
             transform.position += transform.forward * movement;
-        }
-        else
-        {
-            Damage();
-            StartCoroutine(SpeedBack());
-        }
+
+            
+
     }
 
     // Makes it so the player has a lil knockback effect
@@ -135,12 +148,13 @@ public class GeneralController : MonoBehaviour
 
     private bool AttemptMovement(Vector3 movementVector, bool isSide)
     {
-        var obstacles = Physics.OverlapSphere(transform.position + movementVector, size, LayerLibrary.Obstacles);
+        var obstacles = Physics.OverlapSphere(transform.position + movementVector, size, LayerLibrary.Obstacles | LayerLibrary.Bounds);
         bool canPass = true;
         foreach(var obs in obstacles)
         {
             if (obs.TryGetComponent(out Obstacle obstacleComponent))
             {
+                if (damageCooldown > 0) continue;
                 if (!obstacleComponent.IsWalkable(GoesForward, IsJumping))
                     canPass = false;
                 if (!isSide || obstacleComponent.DestroyOnSideContact)
@@ -150,6 +164,21 @@ public class GeneralController : MonoBehaviour
                 canPass = false;
         }
         return canPass;
+    }
+
+    private bool ExtraCheck(Vector3 movementVector)
+    {
+        var obstacles = Physics.OverlapSphere(transform.position + movementVector, size * 0.75f, LayerLibrary.Obstacles);
+        foreach (var obs in obstacles)
+        {
+            if (obs.TryGetComponent(out Obstacle obstacleComponent))
+            {
+                if (!obstacleComponent.IsWalkable(GoesForward, IsJumping))
+                    return false;
+            }
+        }
+
+        return Physics.OverlapSphere(transform.position + movementVector, size, LayerLibrary.Bounds).Length == 0;
     }
 
     protected virtual void Die()
@@ -162,7 +191,7 @@ public class GeneralController : MonoBehaviour
     {
         if (damageCooldown > 0) return;
 
-        damageCooldown = 0.3f;
+        damageCooldown = 1f;
         if(--hpLeft <= 0)
         {
             Die();

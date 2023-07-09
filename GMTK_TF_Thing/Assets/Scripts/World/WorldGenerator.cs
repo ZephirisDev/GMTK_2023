@@ -14,9 +14,10 @@ public class WorldGenerator : MonoBehaviour
     private Direction curLayoutDirection;
     private Direction nextMovementChange;
     private Vector2Int curNextSpawnPos = new Vector2Int(0, 0);
-    private Vector2Int curPlayerPos = new Vector2Int(0, -1);
     private List<Direction> directions = new List<Direction>();
     private List<GameObject> loadedSections = new List<GameObject>();
+    private List<Vector2Int> poses = new List<Vector2Int>();
+    private bool GoForward = true;
 
     private Section GetRandomSection() {
         var validSections = GetValidSections();
@@ -24,6 +25,13 @@ public class WorldGenerator : MonoBehaviour
         //lastThree.Enqueue(section);
         //lastThree.Dequeue();
         return section;
+    }
+
+    public void Switch()
+    {
+        GoForward = false;
+        poses.Remove(poses.Last());
+        poses.Remove(poses.Last());
     }
 
     private List<Section> GetValidSections()
@@ -41,9 +49,23 @@ public class WorldGenerator : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(new Vector3(curNextSpawnPos.x * sizePerSection, 0, curNextSpawnPos.y * sizePerSection));
-        if (Physics.OverlapSphere(new Vector3(curNextSpawnPos.x * sizePerSection, 0, curNextSpawnPos.y * sizePerSection), sizePerSection * 1.5f, LayerLibrary.Player).Length > 0)
-            SpawnNext();
+        if (GoForward)
+        {
+            if (Physics.OverlapSphere(new Vector3(poses.Last().x * sizePerSection, 0, poses.Last().y * sizePerSection), sizePerSection, LayerLibrary.Player).Length > 0)
+                SpawnNext();
+        }
+        else
+        {
+            if (loadedSections.Count <= 4) return;
+
+            if (Physics.OverlapSphere(new Vector3(poses.Last().x * sizePerSection, 0, poses.Last().y * sizePerSection), sizePerSection, LayerLibrary.Player).Length > 0)
+            {
+                poses.Remove(poses.Last());
+                loadedSections[loadedSections.Count - 4].SetActive(true);
+                Destroy(loadedSections.Last());
+                loadedSections.Remove(loadedSections.Last());
+            }
+        }
         /*
         if (curLayoutDirection == Direction.Forward)
         {
@@ -74,8 +96,8 @@ public class WorldGenerator : MonoBehaviour
         c.transform.position = new Vector3((curNextSpawnPos.x) * sizePerSection, 0, (curNextSpawnPos.y) * sizePerSection);
         directions.Add(section.direction);
         loadedSections.Add(c);
-        if (loadedSections.Count > 4)
-            loadedSections[loadedSections.Count - 4].SetActive(false);
+        if (loadedSections.Count > 5)
+            loadedSections[loadedSections.Count - 5].SetActive(false);
         switch (curLayoutDirection)
         {
             case Direction.Left:
@@ -93,6 +115,7 @@ public class WorldGenerator : MonoBehaviour
             curLayoutDirection = curLayoutDirection == Direction.Forward ? section.direction : Direction.Forward;
         }
 
+        poses.Add(curNextSpawnPos);
         nextMovementChange = section.direction;
         switch (curLayoutDirection)
         {

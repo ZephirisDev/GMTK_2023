@@ -6,10 +6,12 @@ using UnityEngine;
 public class LayerLibrary : Initializable
 {
     [SerializeField] LayerMask obstacles;
+    [SerializeField] LayerMask bounds;
     [SerializeField] LayerMask rotator;
     [SerializeField] LayerMask player;
 
     public static LayerMask Obstacles => Instance.obstacles;
+    public static LayerMask Bounds => Instance.bounds;
     public static LayerMask Rotators => Instance.rotator;
     public static LayerMask Player => Instance.player;
 

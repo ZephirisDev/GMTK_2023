@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 305739959597575711}
   - component: {fileID: 2583592387400194773}
   - component: {fileID: 6843817595306173756}
+  - component: {fileID: -2412079550434326015}
   m_Layer: 0
   m_Name: OldTree
   m_TagString: Untagged
@@ -143,3 +144,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4781277628412113339, guid: 1bb725f7866bd934881cb2fe1c2c62c5, type: 3}
+--- !u!114 &-2412079550434326015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4096657069360020224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c3c6373bc5a4549af38c1a36ecdad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preyBehaviour: 1
+  predatorBehaviour: 1
+  destroyOnSideContact: 0
+  ignoreWhenJumping: 1
+  type: 0
+  amount: 0

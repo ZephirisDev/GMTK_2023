@@ -59,8 +59,9 @@ public class TFHandler : MonoBehaviour
         // Time til animation be done
         camAnimator.SetTrigger("TFTrigger");
         badger.SetTrigger("TF");
-        yield return new WaitForSeconds(3);
-        StartCoroutine(GetBadgerAway());
+        yield return new WaitForSeconds(2f);
+        badger.GetComponent<BadgerHandler>().EndIt();
+        yield return new WaitForSeconds(1f);
         predatorController.enabled = true;
     }
 }

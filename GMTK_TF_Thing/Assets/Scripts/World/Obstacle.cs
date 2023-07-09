@@ -8,6 +8,8 @@ public class Obstacle : MonoBehaviour
     [SerializeField] HitBehaviour predatorBehaviour;
     [SerializeField] bool destroyOnSideContact;
     [SerializeField] bool ignoreWhenJumping;
+    [SerializeField] ParticleType type;
+    [SerializeField] int amount;
     public bool DestroyOnSideContact => destroyOnSideContact;
 
     /// <summary>
@@ -34,6 +36,7 @@ public class Obstacle : MonoBehaviour
     private void DestroyObstacle()
     {
         // Destroy this and maybe do some particle stuff
+        ParticleHandler.PlayParticles(transform.position, transform.rotation, type, amount);
         Destroy(gameObject);
     }
 

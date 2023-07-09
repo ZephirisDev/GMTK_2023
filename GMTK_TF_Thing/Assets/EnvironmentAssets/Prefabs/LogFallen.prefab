@@ -114,3 +114,5 @@ MonoBehaviour:
   predatorBehaviour: 2
   destroyOnSideContact: 0
   ignoreWhenJumping: 1
+  type: 1
+  amount: 250
