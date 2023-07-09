@@ -9,6 +9,12 @@ public class Finale : MonoBehaviour
     [SerializeField] GameObject goodEnding;
     [SerializeField] GameObject badEnding;
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+            GameOver(true);
+    }
+
     public void GameOver(bool success)
     {
         if (!success)
@@ -29,16 +35,16 @@ public class Finale : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         AudioHandler.TryPlaySound(scc ? SoundIdentifier.Nom : SoundIdentifier.Sigh);
+        yield return new WaitForSeconds(2f);
+        if (scc)
+            AudioHandler.TryPlaySound(SoundIdentifier.Wink);
         var c = FindObjectOfType<music>().GetComponent<AudioSource>();
         while(c.volume > 0)
         {
-            c.volume -= Time.deltaTime * 0.03f;
+            c.volume -= Time.deltaTime * 0.06f;
             yield return null;
         }
-        yield return new WaitForSeconds(1);
-        if (scc)
-            AudioHandler.TryPlaySound(SoundIdentifier.Wink);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(0);
     }
 

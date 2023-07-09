@@ -92,6 +92,7 @@ public class IntroHandler : MonoBehaviour
         cameraAnima.SetTrigger("Start");
         shadowAnima.enabled = true;
         front.enabled = true;
+        FindObjectOfType<music>().PlaySong(0);
         yield return new WaitForSeconds(5f);
         foreach(var n in killa)
         {

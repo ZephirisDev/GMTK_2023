@@ -31,6 +31,7 @@ public class FrontController : GeneralController
 
     private void FixedUpdate()
     {
+        if (IsJumping) return;
         count++;
         if (count % 20 == 0)
         {

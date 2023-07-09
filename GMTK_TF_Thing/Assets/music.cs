@@ -24,8 +24,4 @@ public class music : MonoBehaviour
                 break;
         }
     }
-
-    void Start() {
-        PlaySong(0);
-    }
 }

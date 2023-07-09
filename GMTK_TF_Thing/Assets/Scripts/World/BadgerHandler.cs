@@ -41,7 +41,7 @@ public class BadgerHandler : MonoBehaviour
 
     private bool IsCaught()
     {
-        return Physics.OverlapSphere(transform.position, 0.6f, LayerLibrary.Player).Length > 0;
+        return Physics.OverlapSphere(transform.position, 1f, LayerLibrary.Player).Length > 0;
     }
 
     IEnumerator WalkTo(Vector3 pos)

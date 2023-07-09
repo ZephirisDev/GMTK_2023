@@ -75,8 +75,9 @@ public class TFHandler : MonoBehaviour
             yield return null;
         }
         tfThingy.gameObject.SetActive(false);
-        FindObjectOfType<music>().PlaySong(2);
         yield return new WaitForSeconds(2f);
         badger.GetComponent<BadgerHandler>().SetVuln();
+        yield return new WaitForSeconds(8.5f);
+        FindObjectOfType<music>().PlaySong(2);
     }
 }

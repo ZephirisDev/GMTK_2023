@@ -50,10 +50,10 @@ MonoBehaviour:
     volume: 0.2
   - s: 1
     clip: {fileID: 8300000, guid: 403c6f064c665c34fa998a7ea5841200, type: 3}
-    volume: 0.15
+    volume: 0.1
   - s: 2
     clip: {fileID: 8300000, guid: 7c31b05b48fbbd341bed180690dc84fd, type: 3}
-    volume: 0.15
+    volume: 0.1
   - s: 5
     clip: {fileID: 8300000, guid: b1134fa6a3c62c243b4953b5ddf1b820, type: 3}
     volume: 0.2
