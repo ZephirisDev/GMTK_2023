@@ -10,8 +10,11 @@ public class MainMenuHandler : MonoBehaviour
     private Vector3[] originalRotations;
     private Vector3[] originalScales;
 
-    public GameObject selected;
-    public int _selected;
+    private GameObject selected;
+    public GameObject logo;
+    private Vector3 logoOriginalScale;
+    private float logoT = 1f;
+    private int _selected;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +31,8 @@ public class MainMenuHandler : MonoBehaviour
             originalScales[i] = obbo.transform.localScale;
             i++;
         }
+
+        logoOriginalScale = logo.transform.localScale;
     }
 
     // Update is called once per frame
@@ -67,6 +72,9 @@ public class MainMenuHandler : MonoBehaviour
 
         selected.transform.localScale = Vector3.Lerp(selected.transform.localScale, (s * 1.4f), Time.deltaTime * 4); 
 
+        logoT += Time.deltaTime * 0.5f;
+        logo.transform.localScale = logoOriginalScale + (logoOriginalScale * (Mathf.Sin(logoT)) * 0.12f);
+
     }
 
     private void Select()
@@ -85,12 +93,10 @@ public class MainMenuHandler : MonoBehaviour
         _selected += dir;
         Debug.Log(_selected);
         if (_selected < 0) {
-            Debug.Log("mo1");
             _selected = menuItems.Length;
         }
 
         if (_selected >= menuItems.Length) {
-            Debug.Log("mo2");
             _selected = 0;
         }
 
