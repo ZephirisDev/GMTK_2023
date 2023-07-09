@@ -182,6 +182,7 @@ public class GeneralController : MonoBehaviour
 
     protected virtual void Die()
     {
+        AudioHandler.TryPlaySound(SoundIdentifier.Hurt);
         Debug.Log("I died :(");
         OnDeath?.Invoke();
     }

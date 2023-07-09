@@ -41,7 +41,7 @@ public class BadgerHandler : MonoBehaviour
     {
         var dif = pos - transform.position;
         int steps = 16;
-        float totalTime = 0.6f;
+        float totalTime = 0.3f;
 
         var smallDif = new Vector2(dif.x / (float)steps, dif.y / (float)steps);
 

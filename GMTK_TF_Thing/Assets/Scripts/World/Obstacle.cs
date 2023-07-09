@@ -36,6 +36,7 @@ public class Obstacle : MonoBehaviour
     private void DestroyObstacle()
     {
         // Destroy this and maybe do some particle stuff
+        AudioHandler.TryPlaySound(SoundIdentifier.Destroy);
         ParticleHandler.PlayParticles(transform.position, transform.rotation, type, amount);
         Destroy(gameObject);
     }

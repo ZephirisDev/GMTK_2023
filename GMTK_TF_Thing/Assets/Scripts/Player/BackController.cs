@@ -13,6 +13,7 @@ public class BackController : GeneralController
         count++;
         if(count % 20 == 0)
         {
+            AudioHandler.TryPlaySound(SoundIdentifier.Stomp);
             FindObjectOfType<ScreenShaker>().ShakeScreen(0.2f, 0.1f);
         }
     }

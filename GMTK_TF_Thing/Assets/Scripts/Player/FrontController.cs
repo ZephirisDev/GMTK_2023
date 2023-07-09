@@ -22,8 +22,19 @@ public class FrontController : GeneralController
         cooldownBadger -= time;
         if(cooldownBadger < 0)
         {
-            cooldownBadger = 0.5f;
+            cooldownBadger = 0.25f;
             badger.AddPos(transform.position);
+        }
+    }
+
+    private int count;
+
+    private void FixedUpdate()
+    {
+        count++;
+        if (count % 20 == 0)
+        {
+            AudioHandler.TryPlaySound(SoundIdentifier.Walk);
         }
     }
 
@@ -46,6 +57,7 @@ public class FrontController : GeneralController
 
     private IEnumerator JumpingTime()
     {
+        AudioHandler.TryPlaySound(SoundIdentifier.Jump);
         float timePassed = 0;
         Vector3 jumpVec = new Vector3(0, 1f, -0.1f);
         var playerContPos = animator.transform.localPosition;

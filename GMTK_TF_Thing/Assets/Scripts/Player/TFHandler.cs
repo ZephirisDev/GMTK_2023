@@ -57,11 +57,13 @@ public class TFHandler : MonoBehaviour
     IEnumerator TFSequence()
     {
         // Time til animation be done
+        FindObjectOfType<music>().PlaySong(1);
         camAnimator.SetTrigger("TFTrigger");
         badger.SetTrigger("TF");
         yield return new WaitForSeconds(2f);
         badger.GetComponent<BadgerHandler>().EndIt();
         yield return new WaitForSeconds(1f);
         predatorController.enabled = true;
+        FindObjectOfType<music>().PlaySong(2);
     }
 }
