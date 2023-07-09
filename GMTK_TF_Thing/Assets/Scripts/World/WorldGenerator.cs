@@ -57,12 +57,12 @@ public class WorldGenerator : MonoBehaviour
         }
         else
         {
-            if (loadedSections.Count <= 4) return;
+            if (loadedSections.Count <= 6) return;
 
             if (Physics.OverlapSphere(new Vector3(poses.Last().x * sizePerSection, 0, poses.Last().y * sizePerSection), sizePerSection, LayerLibrary.Player).Length > 0)
             {
                 poses.Remove(poses.Last());
-                loadedSections[loadedSections.Count - 4].SetActive(true);
+                loadedSections[loadedSections.Count - 5].SetActive(true);
                 Destroy(loadedSections.Last());
                 loadedSections.Remove(loadedSections.Last());
             }

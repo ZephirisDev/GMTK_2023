@@ -99,7 +99,6 @@ public class GeneralController : MonoBehaviour
             Rotate(Mathf.Clamp(70 * Time.deltaTime * (left ? -1 : 1), -angles, angles));
             angles -= 70 * Time.deltaTime;
 
-            Debug.Log(angles);
             yield return null;
         }
         disableSide = false;
